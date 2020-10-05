@@ -1,7 +1,16 @@
 User show <br/> 
 <%= @user.name %><br/>
-<%= @user.host_events.count %><br/>
-Creator: <%= @user.host_events.last.creator.name %>
-<br/>
+Host Events:
+<ul>
+  <% @user.host_events.each do |event| %>
+    <li><%= event.name %></li>
+  <% end %>
+</ul>
+Attending:
+<ul>
+  <% @user.attended_events.each do |event| %>
+    <li><%= event.name %></li>
+  <% end %>
+</ul>
 <%= link_to 'main', users_path %> | 
 <%= link_to 'logout', logout_path%>

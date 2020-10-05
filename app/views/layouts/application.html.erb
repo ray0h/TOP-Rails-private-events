@@ -12,7 +12,7 @@
   <body>
     <% if user_signed_in? %>
       <div>
-        Hello, <%= current_user.name %><br/>
+        Hello, <%= link_to current_user.name, user_path(current_user.id) %><br/>
         <%= link_to 'logout', logout_path %> |
         <%= link_to 'create new event', new_event_path %> |
         <%= link_to 'all events', events_path %>
