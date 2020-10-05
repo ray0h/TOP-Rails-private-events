@@ -1,0 +1,8 @@
+<h2>Sign up</h2>
+<%= form_for @user do |f| %>
+  <%= f.label :new_user_name %><br/>
+  <%= f.text_field :name, autofocus: true %><br/>
+  <%= f.submit 'submit' %><br/>
+<% end %>
+<br/>
+<%= link_to 'Login', login_path %>

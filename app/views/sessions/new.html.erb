@@ -1,0 +1,8 @@
+<h2>Log in</h2>
+<%= form_with url: sessions_path, method: :post do |f| %>
+  <%= f.label :user_name %><br/>
+  <%= f.text_field :name, autofocus: true %><br/>
+  <%= f.submit 'log in' %><br/>
+<% end %>
+<br/>
+<%= link_to 'Sign Up', new_user_path %>
