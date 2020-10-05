@@ -12,10 +12,10 @@
   <body>
     <% if user_signed_in? %>
       <div>
-        <%= current_user.host_events.all %>
-        Hello, <%= current_user.name %>, <%= session[:user_id] %><br/>
-        <%= link_to 'create new event', new_event_path %>
-        <%= link_to 'logout', logout_path %>
+        Hello, <%= current_user.name %><br/>
+        <%= link_to 'logout', logout_path %> |
+        <%= link_to 'create new event', new_event_path %> |
+        <%= link_to 'all events', events_path %>
       </div>
     <% end %>
     <br/>
