@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   def index
-    if session[:user_id]
-      @user = User.find_by(id: session[:user_id])
-    else
-      @user = User.none
-    end
+    @users = User.all
+    # if session[:user_id]
+    #   @user = User.find_by(id: session[:user_id])
+    # else
+    #   @user = User.none
+    # end
   end
 
   def new
@@ -14,14 +15,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
     if @user.save
-      redirect_to @user
+      redirect_to login_path
     else
       render :new
     end
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   private

@@ -7,18 +7,35 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-trank': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <div>
-        Hello, <%= link_to current_user.name, user_path(current_user.id) %><br/>
-        <%= link_to 'logout', logout_path %> |
-        <%= link_to 'create new event', new_event_path %> |
-        <%= link_to 'all events', events_path %>
+    <nav class='sticky top-0 flex justify-between bg-gray-400 mx-auto p-4'>
+      <div class="flex flex-row">
+        <div class="mr-4 text-2xl font-bold">Private Events  </div>
+        <div class="pt-2">  
+          <% if user_signed_in? %>
+            <span class="align-middle">Hello, <%= link_to current_user.name, user_path(current_user.id), class: 'hover:underline hover:text-orange-600' %><span>
+          
+          <% end %>
+        </div>
       </div>
-    <% end %>
-    <br/>
+      <div class="pt-2">
+        <% if user_signed_in? %>
+          <%= link_to 'logout', logout_path, class: 'hover:underline hover:text-orange-600' %> |
+          <%= link_to 'create new event', new_event_path, class: 'hover:underline hover:text-orange-600' %> |
+          <%= link_to 'all events', events_path, class: 'hover:underline hover:text-orange-600' %> |
+          <%= link_to 'all users', users_path, class: 'hover:underline hover:text-orange-600' %>
+        <% else %>
+          <%= link_to 'login', login_path, class: 'hover:underline hover:text-orange-600' %> |
+          <%= link_to 'sign up', new_user_path, class: 'hover:underline hover:text-orange-600' %>
+        <% end %>
+        
+      </div>
+    </nav>
+   
     <%= yield %>
   </body>
 </html>

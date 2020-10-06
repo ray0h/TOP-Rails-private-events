@@ -1,16 +1,30 @@
-User show <br/> 
-<%= @user.name %><br/>
-Host Events:
-<ul>
-  <% @user.host_events.each do |event| %>
-    <li><%= event.name %></li>
-  <% end %>
-</ul>
-Attending:
-<ul>
-  <% @user.attended_events.each do |event| %>
-    <li><%= event.name %></li>
-  <% end %>
-</ul>
-<%= link_to 'main', users_path %> | 
-<%= link_to 'logout', logout_path%>
+<div class="p-4">
+  <h2 class="font-bold underline text-lg mb-3">Host Events: </h2>
+  <ul>
+    <% @user.host_events.each do |event| %>
+      <li class="list-disc ml-3"><%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="p-4">
+  <h2 class="font-bold underline text-lg mb-3">Previously Attended Events:</h2>
+  <ul>
+    <% @user.attended_events.each do |event| %>
+      <% if event.date < Time.now %>
+        <li class='list-disc ml-3'><%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<div class="p-4">
+  <h2 class="font-bold underline text-lg mb-3">Upcoming Events: </h2>
+  <ul>
+    <% @user.attended_events.each do |event| %>
+      <% if event.date > Time.now %>
+        <li class='list-disc ml-3'><%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

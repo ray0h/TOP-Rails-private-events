@@ -1,10 +1,25 @@
-<h2>Events</h2>
-<% @events.each do |event| %>
-  <div>
-    <strong>Event: </strong><%= link_to event.name, event_path(event.id) %><br/>
-    <strong>Date: </strong><%= event.date.strftime('%m/%d/%Y') %><br/>
-    <strong>Location: </strong><%= event.location %><br/>
-    <strong>Created By: </strong><%= event.creator.name %><br/>
-    <br/>
-  </div>
-<% end %>
+<div class="p-4">
+  <h2 class='font-bold underline text-lg mb-3'>Past Events</h2>
+  <% @past.each do |event| %>
+    <div>
+      <strong>Event: </strong><%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %><br/>
+      <strong>Date: </strong><%= event.date.strftime('%m/%d/%Y') %><br/>
+      <strong>Location: </strong><%= event.location %><br/>
+      <strong>Created By: </strong><%= event.creator.name %><br/>
+      <br/>
+    </div>
+  <% end %>
+</div>
+
+<div class="pl-4">
+  <h2 class='font-bold underline text-lg mb-3'>Upcoming Events</h2>
+  <% @upcoming.each do |event| %>
+    <div>
+      <strong>Event: </strong><%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %><br/>
+      <strong>Date: </strong><%= event.date.strftime('%m/%d/%Y') %><br/>
+      <strong>Location: </strong><%= event.location %><br/>
+      <strong>Created By: </strong><%= event.creator.name %><br/>
+      <br/>
+    </div>
+  <% end %>
+</div>

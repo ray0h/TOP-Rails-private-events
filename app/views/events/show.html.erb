@@ -1,2 +1,9 @@
-<%= @event.creator.name %><br/>
-Attendees: <%= @event.attendees.count %>
+<div class="p-4">
+  <h2 class="font-bold underline text-lg mb-3"><%= @event.name %></h2>
+
+  <strong>Date: </strong><%= @event.date.strftime('%m/%d/%Y') %><br/>
+  <strong>Location: </strong><%= @event.location %><br/>
+  <strong>Creator: </strong><%= @event.creator.name %><br/>
+  <br/>
+  <strong>No. Attendees: </strong><%= @event.attendees.count %>
+</div>

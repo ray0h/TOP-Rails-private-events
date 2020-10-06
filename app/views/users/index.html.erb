@@ -1,4 +1,8 @@
-Index Page <br/>
-<% unless user_signed_in? %>
-  <%= link_to 'login', login_path %>
-<% end %>
+<div class="p-4"> 
+  <h2 class="font-bold underline text-lg mb-3">User List</h2>
+  <ul>
+    <% @users.each do |user| %>
+      <li class="list-disc ml-3"><%= link_to user.name, user_path(user.id), class: 'hover:underline hover:text-orange-600' %></li>
+    <% end %>
+  </ul>
+</div>
