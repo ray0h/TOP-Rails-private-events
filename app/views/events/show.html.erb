@@ -1,6 +1,6 @@
-<div class="p-4">
+<div class='px-6 py-4'>
   <div>
-  <h2 class ="mb-3">
+  <h2 class ='mb-3'>
     <span , class='font-bold underline text-lg mr-2'><%= @event.name %></span>
     <% if current_user.name == @event.creator.name %>
       <%= link_to '&#x270E'.html_safe, edit_event_path(@event.id), class: 'hover:text-orange-600 text-xl' %>
@@ -16,8 +16,10 @@
   <br/>
 
   <strong>No. Invited: </strong><%= @event.invitees.count %><br/>
-  <strong>No. Declined: </strong><%= @event.declined.count %><br/>
-  <strong>No. Attendees: </strong><%= @event.confirmed.count %><br/>
+  <strong>No. Declined: </strong>
+  <%= @event.declined.count %>, <%= @event.declined_list %><br/>
+  <strong>No. Attendees: </strong>
+  <%= @event.confirmed.count %>, <%= @event.confirmed_list %><br/>
   <br/>
-  <%= link_to 'Back', user_path(current_user.id), class: 'bg-blue-500 text-white py-1 px-2 text-sm rounded'%>
+  <%= link_to 'Back', user_path(current_user.id), class: 'bg-blue-500 text-white py-1 px-2 text-sm rounded cursor-pointer hover:bg-blue-400'%>
 </div>

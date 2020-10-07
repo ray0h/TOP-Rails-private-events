@@ -1,9 +1,9 @@
-<div class="p-4">
-  <h2 class='font-bold underline text-lg mb-3'>Log in</h2>
+<div class='px-6 py-4'>
+  <h2 class='font-bold underline text-lg mb-3'>Login</h2>
   <%= form_with url: sessions_path, method: :post do |f| %>
-    <%= f.label :user_name %><br/>
+    <%= f.label 'User name:' %><br/>
     <%= f.text_field :name, autofocus: true, class: 'mb-3 border border-black shadow appearance-none' %><br/>
-    <%= f.submit 'Log in', class: 'bg-gray-4 py-1 px-2 text-sm rounded' %><br/>
+    <%= f.submit 'Log in', class: 'bg-gray-300 py-1 px-2 text-sm rounded cursor-pointer hover:bg-gray-400' %><br/>
   <% end %>
   <br/>
   <%= link_to 'Sign Up', new_user_path, class: 'hover:underline' %>

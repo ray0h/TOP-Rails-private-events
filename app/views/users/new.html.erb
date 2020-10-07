@@ -1,9 +1,9 @@
-<div class='p-4'>
+<div class='px-6 py-4'>
   <h2 class='font-bold underline text-lg mb-3'>Sign up</h2>
   <%= form_for @user do |f| %>
-    <%= f.label :new_user_name %><br/>
+    <%= f.label 'New User name:' %><br/>
     <%= f.text_field :name, autofocus: true, class: 'mb-3 border border-black shadow appearance-none' %><br/>
-    <%= f.submit 'submit', class: 'bg-gray-4 py-1 px-2 text-sm rounded' %><br/>
+    <%= f.submit class: 'bg-gray-300 py-1 px-2 text-sm rounded' %><br/>
   <% end %>
   <br/>
   <%= link_to 'login', login_path, class: 'hover:underline' %>

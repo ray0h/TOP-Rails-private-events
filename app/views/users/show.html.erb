@@ -1,19 +1,19 @@
-<div class="p-4">
-  <h2 class="font-bold underline text-lg mb-3">Pending Invites: </h2>
+<div class='px-6 py-4'>
+  <h2 class='font-bold underline text-lg mb-3'>Pending Invites: </h2>
   <ul>
     <% @user.pending_events.each do |invite| %>
-      <li class="list-disc ml-3">
+      <li class='list-disc ml-3'>
       <%= form_with url: 'users#update', method: :patch do |f| %>
         <div class='flex justify-between'>
         <%= link_to invite.name, event_path(invite.id), class: 'hover:underline hover:text-orange-600'%>:
         <div class='mr-64'>
         <span class='mr-2'>Will you be attending?</span> 
-        <%= f.radio_button('rsvp', 'no') %>
+        <%= f.radio_button('rsvp', 'no', { class: 'cursor-pointer' }) %>
         <span class='mr-2'>No</span>
-        <%= f.radio_button('rsvp', 'yes', {required: 'required' }) %>
+        <%= f.radio_button('rsvp', 'yes', {required: 'required', class: 'cursor-pointer' }) %>
         <span class='mr-2'>Yes</span>
         <%= hidden_field_tag 'event_id', invite.id %>
-        <%= f.submit :rsvp, class: 'bg-gray-300 py-0.5 px-2 border border-black text-sm rounded' %>
+        <%= f.submit :rsvp, class: 'bg-gray-300 py-0.5 px-2 border border-black text-sm rounded cursor-pointer hover:bg-gray-400' %>
         </div>
         </div>
       <% end %>
@@ -22,19 +22,19 @@
   </ul>
 </div>
 
-<div class="p-4">
-  <h2 class="font-bold underline text-lg mb-3">Host Events: </h2>
+<div class='px-6 py-4'>
+  <h2 class='font-bold underline text-lg mb-3'>Host Events: </h2>
   <ul>
     <% @user.host_events.each do |event| %>
-      <li class="list-disc ml-3">
+      <li class='list-disc ml-3'>
         <%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %>
       </li>
     <% end %>
   </ul>
 </div>
 
-<div class="p-4">
-  <h2 class="font-bold underline text-lg mb-3">Previously Attended Events:</h2>
+<div class='px-6 py4'>
+  <h2 class='font-bold underline text-lg mb-3'>Previously Attended Events:</h2>
   <ul>
     <% @user.attended_events.each do |event| %>
       <% if event.date < Date.today %>
@@ -44,8 +44,8 @@
   </ul>
 </div>
 
-<div class="p-4">
-  <h2 class="font-bold underline text-lg mb-3">Upcoming Events: </h2>
+<div class='px-6 py-4'>
+  <h2 class='font-bold underline text-lg mb-3'>Upcoming Events: </h2>
   <ul>
     <% @user.attended_events.each do |event| %>
       <% if event.date >= Date.today %>
