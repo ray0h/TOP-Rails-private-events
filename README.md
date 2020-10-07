@@ -4,4 +4,5 @@
 
 Project to practice Active Record querying principles.  The assignment will mimic an Eventbrite like event organization app.  
 
+Built using Rails and Tailwind CSS for styling
 

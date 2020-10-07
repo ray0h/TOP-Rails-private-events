@@ -2,7 +2,11 @@
   <h2 class="font-bold underline text-lg mb-3">User List</h2>
   <ul>
     <% @users.each do |user| %>
-      <li class="list-disc ml-3"><%= link_to user.name, user_path(user.id), class: 'hover:underline hover:text-orange-600' %></li>
+      <% if current_user.name == user.name %>
+        <li class="list-disc ml-3"><%= link_to user.name, user_path(user.id), class: 'hover:underline hover:text-orange-600' %></li>
+      <% else %>
+        <li class="list-disc ml-3"><%= user.name %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>

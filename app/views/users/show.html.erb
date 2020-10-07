@@ -1,4 +1,28 @@
 <div class="p-4">
+  <h2 class="font-bold underline text-lg mb-3">Pending Invites: </h2>
+  <ul>
+    <% @user.pending_events.each do |invite| %>
+      <li class="list-disc ml-3">
+      <%= form_with url: 'users#update', method: :patch do |f| %>
+        <div class='flex justify-between'>
+        <%= link_to invite.name, event_path(invite.id), class: 'hover:underline hover:text-orange-600'%>:
+        <div class='mr-64'>
+        <span class='mr-2'>Will you be attending?</span> 
+        <%= f.radio_button('rsvp', 'no') %>
+        <span class='mr-2'>No</span>
+        <%= f.radio_button('rsvp', 'yes') %>
+        <span class='mr-2'>Yes</span>
+        <%= hidden_field_tag 'event_id', invite.id %>
+        <%= f.submit :rsvp, class: 'bg-gray-4 py-0.5 px-2 border border-black text-sm rounded' %>
+        </div>
+        </div>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="p-4">
   <h2 class="font-bold underline text-lg mb-3">Host Events: </h2>
   <ul>
     <% @user.host_events.each do |event| %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   resources :sessions, only: %i[new create destroy]
+  root to: 'events#index'
 
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
