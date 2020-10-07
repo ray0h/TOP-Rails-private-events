@@ -1,11 +1,11 @@
 class Event < ApplicationRecord
   belongs_to :creator, class_name: 'User', inverse_of: 'host_events', foreign_key: 'user_id'
 
-  has_many :lists
+  has_many :lists, dependent: :destroy
   has_many :invitees, through: :lists, source: :user, foreign_key: 'user_id'
 
-  scope :past,       -> { where('date < ?', Time.now).order(:date) }
-  scope :upcoming,   -> { where('date > ?', Time.now).order(:date) }
+  scope :past,       -> { where('date < ?', Date.today).order(:date) }
+  scope :upcoming,   -> { where('date >= ?', Date.today).order(:date) }
 
   def pending
     invitees.includes(:lists).where('lists.rsvp = ?', 'pend')
@@ -21,7 +21,7 @@ class Event < ApplicationRecord
 
   # getter
   def invitee_list
-    invitees.map(&:name).join(', ')
+    invitees.map { |invitee| invitee.id.to_s }
   end
 
   # setter (from invite form)

@@ -1,14 +1,5 @@
 <div class="p-4">
   <h2 class='font-bold underline text-lg mb-3' >Create New Event</h2>
-  <%= form_with model: @event do |f| %>
-    <%= f.label :event_name %><br/>
-    <%= f.text_field :name, autofocus: true, class: 'mb-1 border border-black shadow appearance-none' %><br/>
-    <%= f.label :event_date %><br/>
-    <%= f.date_field :date, class: 'mb-1 border border-black shadow appearance-none' %><br/>
-    <%= f.label :event_location %><br/>
-    <%= f.text_field :location, class: 'mb-3 border border-black shadow appearance-none' %><br/>
-    <%= f.label :select_invitees %><br/>
-    <%= f.collection_select :invitee_list, @users, :id, :name, {}, { multiple: true, size: 3, class: 'border border-black' } %><br/>
-    <%= f.submit 'Create Event', class: 'bg-gray-4 py-1 px-2 text-sm rounded' %>
-  <% end %>
+  <%= render 'form' %>
+   <%= link_to 'Cancel', user_path(current_user.id), class: 'bg-blue-500 text-white py-1 px-2 text-sm rounded'%>
 </div>

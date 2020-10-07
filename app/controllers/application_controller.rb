@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to login_path unless current_user
+    redirect_to login_path unless user_signed_in?
   end
 end

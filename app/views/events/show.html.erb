@@ -1,13 +1,23 @@
-
 <div class="p-4">
-  <h2 class ="font-bold underline text-lg mb-3"><%= @event.name %></h2>
+  <div>
+  <h2 class ="mb-3">
+    <span , class='font-bold underline text-lg mr-2'><%= @event.name %></span>
+    <% if current_user.name == @event.creator.name %>
+      <%= link_to '&#x270E'.html_safe, edit_event_path(@event.id), class: 'hover:text-orange-600 text-xl' %>
+      <%= link_to '&#x2612'.html_safe, event_path(@event.id), method: :delete, data: {confirm: 'Delete event?'}, class: 'hover:text-orange-600 text-xl' %>
+    <% end %>
+    </h2>
+  </div>
 
   <strong>Date: </strong><%= @event.date.strftime('%m/%d/%Y') %><br/>
+  <strong>Time: </strong><%= @event.time.strftime('%l:%M %P') %><br/>
   <strong>Location: </strong><%= @event.location %><br/>
   <strong>Creator: </strong><%= @event.creator.name %><br/>
   <br/>
 
   <strong>No. Invited: </strong><%= @event.invitees.count %><br/>
   <strong>No. Declined: </strong><%= @event.declined.count %><br/>
-  <strong>No. Attendees: </strong><%= @event.confirmed.count %>
+  <strong>No. Attendees: </strong><%= @event.confirmed.count %><br/>
+  <br/>
+  <%= link_to 'Back', user_path(current_user.id), class: 'bg-blue-500 text-white py-1 px-2 text-sm rounded'%>
 </div>

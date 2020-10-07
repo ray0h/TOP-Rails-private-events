@@ -10,10 +10,10 @@
         <span class='mr-2'>Will you be attending?</span> 
         <%= f.radio_button('rsvp', 'no') %>
         <span class='mr-2'>No</span>
-        <%= f.radio_button('rsvp', 'yes') %>
+        <%= f.radio_button('rsvp', 'yes', {required: 'required' }) %>
         <span class='mr-2'>Yes</span>
         <%= hidden_field_tag 'event_id', invite.id %>
-        <%= f.submit :rsvp, class: 'bg-gray-4 py-0.5 px-2 border border-black text-sm rounded' %>
+        <%= f.submit :rsvp, class: 'bg-gray-300 py-0.5 px-2 border border-black text-sm rounded' %>
         </div>
         </div>
       <% end %>
@@ -26,7 +26,9 @@
   <h2 class="font-bold underline text-lg mb-3">Host Events: </h2>
   <ul>
     <% @user.host_events.each do |event| %>
-      <li class="list-disc ml-3"><%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %></li>
+      <li class="list-disc ml-3">
+        <%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %>
+      </li>
     <% end %>
   </ul>
 </div>
@@ -35,7 +37,7 @@
   <h2 class="font-bold underline text-lg mb-3">Previously Attended Events:</h2>
   <ul>
     <% @user.attended_events.each do |event| %>
-      <% if event.date < Time.now %>
+      <% if event.date < Date.today %>
         <li class='list-disc ml-3'><%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %></li>
       <% end %>
     <% end %>
@@ -46,7 +48,7 @@
   <h2 class="font-bold underline text-lg mb-3">Upcoming Events: </h2>
   <ul>
     <% @user.attended_events.each do |event| %>
-      <% if event.date > Time.now %>
+      <% if event.date >= Date.today %>
         <li class='list-disc ml-3'><%= link_to event.name, event_path(event.id), class: 'hover:underline hover:text-orange-600' %></li>
       <% end %>
     <% end %>
