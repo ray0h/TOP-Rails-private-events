@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :require_login, :require_authorization, only: %i[edit update destroy]
+  before_action :require_login
+  before_action :require_authorization, only: %i[edit update destroy]
 
   def index
     @past = Event.past
