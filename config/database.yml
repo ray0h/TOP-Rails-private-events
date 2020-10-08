@@ -12,15 +12,16 @@ default: &default
 
 development:
   <<: *default
-  database: db/development.private_events_dev
+  database: db/private_events_dev
+  # database: db/development.sqlite3
 
-# Warning: The database defined as "test" will be erased and
+# Warning: The database # database: db/development.sqlite3defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.private_events_test
+  database: db/private_events_test
 
 production:
   <<: *default
-  database: db/production.private_events_prod
+  database: db/private_events_prod
