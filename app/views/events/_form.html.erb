@@ -1,12 +1,12 @@
 <%= form_with model: @event do |f| %>
   <%= f.label 'Event name:' %><br/>
-  <%= f.text_field :name, autofocus: true, class: 'mb-1 border border-black shadow appearance-none' %><br/>
+  <%= f.text_field :name, {autofocus: true, required: true, class: 'mb-1 border border-black shadow appearance-none'} %><br/>
   <%= f.label 'Event date:' %><br/>
-  <%= f.date_field :date, class: 'mb-1 border border-black shadow appearance-none' %><br/>
+  <%= f.date_field :date, {required: true, class: 'mb-1 border border-black shadow appearance-none'} %><br/>
   <%= f.label 'Event time:' %><br/>
-  <%= f.time_field :time, class: 'mb-1 border border-black shadow appearance-none' %><br/>
+  <%= f.time_field :time, {required: true, class: 'mb-1 border border-black shadow appearance-none'} %><br/>
   <%= f.label 'Event location:' %><br/>
-  <%= f.text_field :location, class: 'mb-3 border border-black shadow appearance-none' %><br/>
+  <%= f.text_field :location, {required: true, class: 'mb-3 border border-black shadow appearance-none'} %><br/>
   <%= f.label 'Select invitees (hold ctrl for multiple):' %><br/>
   <%= f.collection_select :invitee_list, @users, :id, :name, {}, { multiple: true, size: 3, class: 'border border-black' } %><br/>
   <%= f.submit class: 'bg-gray-300 py-1 px-2 text-sm rounded cursor-pointer hover:bg-gray-400' %>

@@ -2,7 +2,7 @@
   <h2 class='font-bold underline text-lg mb-3'>Login</h2>
   <%= form_with url: sessions_path, method: :post do |f| %>
     <%= f.label 'User name:' %><br/>
-    <%= f.text_field :name, autofocus: true, class: 'mb-3 border border-black shadow appearance-none' %><br/>
+    <%= f.text_field :name, {autofocus: true, required: true, class: 'mb-3 border border-black shadow appearance-none'} %><br/>
     <%= f.submit 'Log in', class: 'bg-gray-300 py-1 px-2 text-sm rounded cursor-pointer hover:bg-gray-400' %><br/>
   <% end %>
   <br/>

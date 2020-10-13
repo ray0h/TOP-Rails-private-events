@@ -2,7 +2,7 @@
   <h2 class='font-bold underline text-lg mb-3'>Sign up</h2>
   <%= form_for @user do |f| %>
     <%= f.label 'New User name:' %><br/>
-    <%= f.text_field :name, autofocus: true, class: 'mb-3 border border-black shadow appearance-none' %><br/>
+    <%= f.text_field :name, {autofocus: true, required: true, class: 'mb-3 border border-black shadow appearance-none' }%><br/>
     <%= f.submit class: 'bg-gray-300 py-1 px-2 text-sm rounded' %><br/>
   <% end %>
   <br/>
